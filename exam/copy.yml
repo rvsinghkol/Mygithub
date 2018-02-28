@@ -1,0 +1,16 @@
+- name: create directory
+  hosts: node
+  sudo: yes
+  tasks:
+  - name: create directory
+    file:
+       path: /tmp/aws
+       state: directory
+       mode: 0755
+       owner: root
+       group: root
+
+  - name: copy file
+    copy:      
+      src: /etc/passwd
+      dest: /tmp/xyz
