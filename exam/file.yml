@@ -1,0 +1,20 @@
+- hosts: node
+  sudo: yes
+  tasks:
+#  - name: create directory
+ #   file:
+  #    path: /tmp/ravi1
+  #    state: directory
+  #    group: root
+  #    mode: 0755
+
+  - name: remove file in remote location
+    file:
+     path: /tmp/ravi
+     state: absent
+     mode: 0755
+  - name: create file
+    file:
+      path: /tmp/rock
+      state: touch
+      mode: 0755
