@@ -1,0 +1,23 @@
+- hosts: node
+  sudo: yes
+  tasks:
+  - name: install http
+    yum:
+     name: httpd
+     state: installed
+     
+  - name: create file index.html
+    copy:
+      src: /opt/index.html
+      dest: /var/www/html/index.html
+
+  - name: start httpd
+    service:
+       name: httpd
+       state: restarted
+       enabled: true
+
+  - name: stop firewall
+    service:
+       name: firewalld
+       state: stopped
