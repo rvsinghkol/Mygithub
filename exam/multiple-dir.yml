@@ -1,0 +1,11 @@
+- hosts: web2
+  user: root
+  sudo: yes
+  tasks:
+  - name: Create multiple directories
+    file:
+      path: "{{ item }}"
+      state: directory
+    with_items: 
+        - '/tmp/devops1'
+        - '/tmp/devops2'
