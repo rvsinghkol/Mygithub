@@ -2,15 +2,19 @@
   user: root
   sudo: yes
   tasks:
-  - name: Create multiple directories
+  - name: create dir
     file:
-      path: "{{ item }}"
-      state: directory
-#    register: file_details
-    with_items: 
-        - '/tmp/devops1'
-        - '/tmp/devops3'
+     path: /tmp/devops2
+     state: directory
 
- # - debug:
- #     msg: "The file or directory exists"
- #   when: file_details.stat.exists
+  - name: Create multiple directories
+    stat:
+      path: /tmp/devops2
+  #    state: directory
+    register: file_details
+
+
+  - debug:
+      msg: "The file or directory exists"
+    when: file_details.stat.exists
+
